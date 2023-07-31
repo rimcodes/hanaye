@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  api: 'http://localhost:3500',
+  api: 'https://hanaye-9261d70cce3c.herokuapp.com/',
   mapApiKey: 'AIzaSyDgHUxKkPw186OXTisIdj8EfLidfO7Kc0A',
 };
