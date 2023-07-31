@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div slot="start" class="bg-white rounded-lg">
+      <ion-buttons>
+        <ion-menu-button>
+          <ion-icon name="heart" size="large" color="danger"></ion-icon>
+        </ion-menu-button>
+      </ion-buttons>
+    </div>
+
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="m-3">
+    <!-- Products -->
+    <div class="flex flex-wrap">
+      <app-product-item
+        *ngFor="let item of products$ | async; let i = index"
+        [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
+        [product]="item"
+        class="w-1/2"
+        [even]="i % 2 === 0"
+      ></app-product-item>
+    </div>
+  </div>
+
+</ion-content>

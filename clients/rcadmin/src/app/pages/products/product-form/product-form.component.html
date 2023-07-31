@@ -1,0 +1,74 @@
+<mat-card class="mx-5 my-8 p-5">
+  <mat-card-title>
+    {{ editMode ? "تعديل منتج" : "إنشاء منتج جديد" }}
+  </mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="form" class="flex flex-wrap justify-around">
+      <div class="w-1/2 p-3">
+        <mat-form-field>
+          <mat-label>الاسم</mat-label>
+          <input matInput type="text" formControlName="title" />
+        </mat-form-field>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <mat-form-field>
+          <mat-label> المتجر </mat-label>
+          <mat-select formControlName="store">
+            <mat-option *ngFor="let store of stores$ | async" [value]="store.id">
+              {{ store.name }}
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <mat-form-field>
+          <mat-label>السعر</mat-label>
+          <input matInput type="number" formControlName="price" />
+        </mat-form-field>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <mat-form-field>
+          <mat-label>التفاصيل</mat-label>
+          <input matInput type="text" formControlName="details" />
+        </mat-form-field>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <mat-slide-toggle color="primary" formControlName="active">
+          مفعل
+        </mat-slide-toggle>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <button type="button" mat-raised-button (click)="fileInput.click()">
+          Choose File
+        </button>
+        <input
+          #fileInput
+          hidden
+          (change)="onImageUpload(fileInput)"
+          type="file"
+        />
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions [align]="'end'">
+    <button
+      mat-raised-button
+      (click)="onSubmit()"
+      color="primary"
+      [disabled]="isSubmitted"
+    >
+      {{ editMode ? "تعديل" : "إنشاء" }}
+    </button>
+  </mat-card-actions>
+
+  <!-- <div class="loading-cnt" *ngIf="isSubmitted && valid">
+  <app-loading></app-loading>
+    الرجاء الانتظار ...
+  </div> -->
+</mat-card>

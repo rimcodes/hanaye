@@ -1,0 +1,15 @@
+<ng-container *ngIf="apiLoaded | async">
+  <google-map
+    [options]="options"
+    height="400"
+    width="100%"
+    (mapClick)="addMarker($event)"
+  >
+    <map-marker
+      #marker="mapMarker"
+      [position]="markerPosition"
+      icon="assets/holders/profile-marker.png"
+      ></map-marker>
+      <!-- (mapClick)="openInfoWindow(marker)" -->
+  </google-map>
+</ng-container>

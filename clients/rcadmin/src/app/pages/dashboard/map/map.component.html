@@ -1,0 +1,57 @@
+<div *ngIf="clusterApiLoaded | async">
+  <ng-container *ngIf="apiLoaded | async">
+    <google-map width="100%" height="100vh" [options]="options" #map>
+      <!-- (mapClick)="addMarker($event)" -->
+
+      <ng-container *ngFor="let renderer of rcdRenders">
+        <map-directions-renderer
+          *ngIf="renderer.directionResult$ | async as directionsResults"
+          [directions]="directionsResults"
+          [options]="renderer.options!"
+          (mapClick)="renderer.options!.infoWindow!.open()"
+        ></map-directions-renderer>
+      </ng-container>
+
+      <ng-container> </ng-container>
+
+      <ng-container *ngFor="let rcdRenderer of rcdRenders">
+        <map-marker
+          #clientMarker="mapMarker"
+          icon="assets/holders/profile-marker.png"
+          [position]="rcdRenderer.position"
+          (mapClick)="
+            openInfoWindow(clientMarker, infoWindow)
+          "
+        ></map-marker>
+        <map-info-window #infoWindow="mapInfoWindow">
+          <div class="w-full flex flex-col justify-center items-center">
+            <img [src]="rcdRenderer.user.image" width="74" class="mx-auto">
+            <h5 class="text-lg">الاسم: {{ rcdRenderer.user.name }}</h5>
+            <span>الترتيب: {{ rcdRenderer.order }}</span>
+          </div>
+        </map-info-window>
+      </ng-container>
+
+      <map-marker
+        [position]="clientPosition"
+        icon="assets/markers/client.png"
+      ></map-marker>
+
+      <map-info-window>
+        <div class="w-32 h-20 text-center">
+          <h5>User location</h5>
+          <img
+            src="assets/holders/profile.png"
+            class="mx-auto"
+            alt="user profile"
+            height="24"
+            width="24"
+          />
+        </div>
+      </map-info-window>
+    </google-map>
+  </ng-container>
+</div>
+
+<!-- <div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div> -->

@@ -1,0 +1,47 @@
+<ion-content [fullscreen]="true">
+  <div class="relative p-5 bg-neutral-100">
+    <ion-toolbar color="clear">
+      <div slot="start" class="bg-white rounded-lg">
+        <ion-buttons>
+          <ion-menu-button>
+            <ion-icon name="heart" size="large" color="danger"></ion-icon>
+          </ion-menu-button>
+        </ion-buttons>
+      </div>
+      <div class="text-center">
+        <ion-title> Home </ion-title>
+      </div>
+      <div slot="end">
+        <img
+          class="p-3"
+          src="assets/holders/user.jpg"
+          width="48"
+          class="rounded-full"
+          alt=""
+        />
+      </div>
+    </ion-toolbar>
+
+    <!-- Greetings -->
+    <div class="my-10">
+      <span class="text-5xl text-neutral-600 font-thin">Hello </span><span class="text-5xl text-neutral-800">Marta,</span>
+      <p class="text-neutral-400">Let's take care of your skin!</p>
+    </div>
+
+    <!-- Most popular -->
+    <div class="my-10 h-100">
+      <app-popular-products></app-popular-products>
+    </div>
+
+    <!-- Products -->
+    <div class="flex flex-wrap">
+      <app-product-item
+        *ngFor="let item of products$ | async; let i = index"
+        [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
+        [product]="item"
+        class="w-1/2"
+        [even]="i % 2 === 0"
+      ></app-product-item>
+    </div>
+  </div>
+</ion-content>
