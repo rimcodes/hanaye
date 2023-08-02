@@ -1,5 +1,5 @@
 <ion-content [fullscreen]="true">
-  <div class="relative p-5 bg-neutral-100">
+  <div class="relative p-5 min-h-screen bg-neutral-100">
     <ion-toolbar color="clear">
       <div slot="start" class="bg-white rounded-lg">
         <ion-buttons>
@@ -9,7 +9,7 @@
         </ion-buttons>
       </div>
       <div class="text-center">
-        <ion-title> Home </ion-title>
+        <ion-title> {{ 'TABS.HOME' | translate}} </ion-title>
       </div>
       <div slot="end">
         <img
@@ -24,20 +24,28 @@
 
     <!-- Greetings -->
     <div class="my-10">
-      <span class="text-5xl text-neutral-600 font-thin">Hello </span><span class="text-5xl text-neutral-800">Marta,</span>
-      <p class="text-neutral-400">Let's take care of your skin!</p>
+      <span class="text-5xl text-neutral-600 font-thin">
+        {{ 'HOME.HELLO' | translate }} </span
+      ><span class="text-5xl text-neutral-800"></span>
+      <p class="text-neutral-400">{{ 'HOME.MESSAGE' | translate }}</p>
     </div>
 
     <!-- Most popular -->
-    <div class="my-10 h-100">
+    <div class="relative my-10 h-auto">
       <app-popular-products></app-popular-products>
     </div>
 
     <!-- Products -->
+    <ng-template #loadingHomeProducts>
+      <app-loading></app-loading>
+    </ng-template>
+
+    <ng-container
+      *ngIf="products$ | async as products; else loadingHomeProducts"
+    ></ng-container>
     <div class="flex flex-wrap">
       <app-product-item
         *ngFor="let item of products$ | async; let i = index"
-        [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
         [product]="item"
         class="w-1/2"
         [even]="i % 2 === 0"

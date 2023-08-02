@@ -8,23 +8,26 @@
       </ion-buttons>
     </div>
 
-    <ion-title>Products</ion-title>
+    <ion-title>{{ 'TABS.PRODUCTS' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-
   <div class="m-3">
+    <ng-template #loadingProducts>
+      <app-loading></app-loading>
+    </ng-template>
     <!-- Products -->
-    <div class="flex flex-wrap">
-      <app-product-item
-        *ngFor="let item of products$ | async; let i = index"
-        [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
-        [product]="item"
-        class="w-1/2"
-        [even]="i % 2 === 0"
-      ></app-product-item>
-    </div>
+    <ng-container *ngIf="products$ | async as products; else loadingProducts">
+      <div class="flex flex-wrap">
+        <app-product-item
+          *ngFor="let item of products; let i = index"
+          [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
+          [product]="item"
+          class="w-1/2"
+          [even]="i % 2 === 0"
+        ></app-product-item>
+      </div>
+    </ng-container>
   </div>
-
 </ion-content>

@@ -3,30 +3,30 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>
-          Raha
+          {{ 'APP_NAME' | translate }}
         </ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
         <ion-menu-toggle>
-          <ion-item lines="none" [routerLink]="['/', 'places']" button>
+          <ion-item lines="none" [routerLink]="['/', 'tabs', 'home']" button>
             <ion-icon name="business" slot="start"></ion-icon>
-            <ion-label>Discover Places</ion-label>
+            <ion-label>{{ 'NAV.HOME' | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
-          <ion-item lines="none" [routerLink]="['/', 'bookings']" button>
+          <ion-item lines="none" [routerLink]="['/', 'favorites']" button>
             <ion-icon name="checkbox-outline" slot="start"></ion-icon>
-            <ion-label>Your Bookings</ion-label>
+            <ion-label>{{ 'NAV.FAVS' | translate }}</ion-label>
           </ion-item>
         </ion-menu-toggle>
-        <!-- <ion-menu-toggle>
+        <ion-menu-toggle>
           <ion-item lines="none" (click)="onLogout()" button>
             <ion-icon name="exit" slot="start"></ion-icon>
-            <ion-label>Logout</ion-label>
+            <ion-label>{{ 'NAV.LOGOUT' | translate }}</ion-label>
           </ion-item>
-        </ion-menu-toggle> -->
+        </ion-menu-toggle>
       </ion-list>
     </ion-content>
   </ion-menu>

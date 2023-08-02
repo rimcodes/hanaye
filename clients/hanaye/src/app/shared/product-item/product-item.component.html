@@ -1,7 +1,7 @@
 <div [class]="'p-3 flex ' +( even ? 'flex-col-reverse' : 'flex-col')">
 
   <div class="relative p-1">
-    <img class="w-full rounded-lg" [src]="product.image" />
+    <img [routerLink]="['', 'tabs', 'products', 'details', product.id]" class="w-full rounded-lg" [src]="product.image" />
     <div [class]="'flex justify-center items-center absolute top-2 right-2 p-1 rounded-md ' + (isFavorite ? 'bg-gray-100' : 'bg-gray-500')">
       <ion-icon name="heart" [color]="isFavorite ? 'danger' : 'light'" (click)="isFavorite = !isFavorite"></ion-icon>
     </div>
@@ -14,6 +14,7 @@
     <span class="text-neutral-500 text-md">
       {{ product.store.name }}
     </span>
+    <ion-button>{{ 'HOME.REQUEST' | translate }}</ion-button>
   </div>
 
 </div>

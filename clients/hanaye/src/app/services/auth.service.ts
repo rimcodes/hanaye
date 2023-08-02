@@ -11,7 +11,6 @@ import { LocalstorageService } from './localstorage.service';
 })
 export class AuthService {
   authAPI = `${environment.api}/auth`
-  userId!: string
 
   constructor(
     private http: HttpClient,
@@ -38,7 +37,29 @@ export class AuthService {
   logout() {
     // clear cookie
     this.storageService.removeUser()
-        this.storageService.removeToken();
-        this.router.navigate(['/login']);
+    this.storageService.removeToken();
+    this.router.navigate(['/login']);
+  }
+
+  isLoggedIn(): boolean {
+    const token = this.storageService.getToken();
+      if (token) {
+        const tokenDecode = JSON.parse(atob(token.split('.')[1]));
+        if (!this._tokenExpired(tokenDecode.exp)) {
+          return true;
+        }
+        return true
+      }
+      this.router.navigate(['/login']);
+      return false;
+  }
+
+  private _tokenExpired(expiration: number): boolean {
+    return Math.floor(new Date().getTime() / 1000) >= expiration;
+  }
+
+  // Delete user account initiating form the user
+  inintDeleteUser(msg: string, id: string) {
+    return this.http.post(this.authAPI + '/delete', {message: msg, id})
   }
 }

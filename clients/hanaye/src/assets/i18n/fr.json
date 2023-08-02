@@ -1,0 +1,88 @@
+{
+  "APP_NAME": "Ghaytek",
+  "NAV": {
+    "HOME": "Accueil",
+    "FAVS": "Favouries",
+    "WORK": "Application des Fourinisseurs",
+    "SETTINGS": "Parameters",
+    "SERVICES": "Services",
+    "SHARE": "partager l'application",
+    "RATE": "évaluer l'application",
+    "LOGOUT": "Se déconnecter",
+    "LANG": "Changer la Langue"
+  },
+  "TABS": {
+    "HOME": "Accueil",
+    "PRODUCTS": "Produits",
+    "PROFILE": "Profile"
+  },
+  "HOME": {
+    "HELLO": "Salut",
+    "MESSAGE": "Hanaye App pour les meilleure produits et services ",
+    "MORE": "Plus",
+    "FOR_YOU": "Pourt toi ",
+    "DETAIL": "Détails de la Service",
+    "DETAIL-DEMAND": "Détails de la Demande",
+    "CATEGORY": "Categories",
+    "LOADING": "En cours de chargements ....",
+    "SERVICES": "Services",
+    "ADD": "Ajouter aux Favouries",
+    "REQUEST": "Demandez",
+    "SEARCH_HOLDER": "Chercher des Services"
+  },
+  "DEMANDS": {
+    "NAME": "Nom",
+    "LOADING": "En cours de chargements ....",
+    "LATEST": "Les dernières Demandes",
+    "NO_DEMAND": "Vous n'avez pas fais des demands recemment",
+    "DEMAND": "Aller voir nos Services",
+    "DEMAND_WELCOME": "Un de nos amploiyer vas vous contacter dans quelques instants."
+  },
+  "PROFILE": {
+    "CHANGE": "Changer le Profile",
+    "EDIT": "Parametres",
+    "LANG": "Changer la langue",
+    "NAME": "Nom",
+    "PHONE": "Téléphone",
+    "MAIL": "Email",
+    "DATE": "Date de rejoinder",
+    "ADDRESS": "L'address",
+    "PASS": "Mot de Pass",
+    "SAVE": "Enregistrer",
+    "NOM_HOLDER": "Entrer voter nom ",
+    "PASS_HOLDER": "Entrer un mot de pass",
+    "PHONE_HOLDER": "Entrer voter numero de telephone",
+    "EMAIL_HOLDER": "Entrer voter address mail electronique",
+    "USERNAME_ERROR": "Le nom d'utilisateur n'est pas valable. Essayer un autre.",
+    "DELETE": "Suprimer le compt",
+    "DELETE_MSG": "Pour quoi vous voulez suprimer voter compt?",
+    "DELETE_DETAILS": "Pour suprimer votre compt contacter nous sur email or WhatsApp",
+    "DELETE_EMAIL": "Contacter Nous"
+  },
+  "REGISTRATION": {
+    "REGISTER": "Enregistrer",
+    "LOGIN": "S'inscrir",
+    "CREATE": "Cree un compt",
+    "USERNAME": "Nom de l'utilisateur",
+    "EMAIL": "L'address electronique",
+    "PASS": "Mot de Pass",
+    "PHONE": "Téléphone",
+    "ADDRESS": "L'address",
+    "NOACCOUNT": "Si vous n'avez pas account",
+    "ACCOUNT": "Deja un member",
+    "PHONE-ERROR": "Le numero telephone entree est invalid",
+    "PHONE-HELP": "Le numero telephone doit etre sous le form 31234567",
+    "EMAIl-ERROR": "",
+    "EMAIL-HELP": "",
+    "PASS-ERROR": "Le mot de pass entree est invalid",
+    "PASS-HELP": "Le mot de pass doit incluir un majuscule, un miniscule, un numero et un charactere special  ",
+    "LOGIN_ERROR": "Le nom d'utilisateur et le mot de pass et sont requis"
+  },
+  "MESSAGE": {
+    "TITLE": "Détails",
+    "DONE": "Le demand a etait crée a:",
+    "LAST": "La dernières modification: ",
+    "DETAIL": "Détails de la Demand",
+    "DATE": "Le demand et pour: "
+  }
+}

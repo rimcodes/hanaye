@@ -12,3 +12,17 @@ export class Product {
   createdAt?: string
   updatedAt?: string
 }
+
+export class Favorites {
+  items!: FavoriteItem[];
+}
+
+export class FavoriteItem {
+  serviceId!: string;
+  product?: Product
+}
+
+export class FavoriteItemDetailed {
+  product!: any;
+  quantity!: number;
+}

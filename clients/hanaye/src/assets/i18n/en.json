@@ -1,0 +1,88 @@
+{
+  "APP_NAME": "Ghaytek",
+  "NAV": {
+    "HOME": "Home",
+    "WORK": "Workers Application",
+    "FAVS": "Favourites",
+    "SETTINGS": "Settings",
+    "SERVICES": "Services",
+    "SHARE": "partager l'application",
+    "RATE": "évaluer l'application",
+    "LOGOUT": "Logout",
+    "LANG": "Change the App language"
+  },
+  "TABS": {
+    "HOME": "Home",
+    "PRODUCTS": "Products",
+    "PROFILE": "Profile"
+  },
+  "HOME": {
+    "HELLO": "Hello",
+    "MESSAGE": "Hanaye App for best products and services!",
+    "MORE": "More",
+    "FOR_YOU": "For you ",
+    "DETAIL": "Service Details",
+    "DETAIL-DEMAND": "Demands Details",
+    "CATEGORY": "Categories",
+    "LOADING": "Loading ...",
+    "SERVICES": "Services",
+    "ADD": "Add to Favourites",
+    "REQUEST": "Request",
+    "SEARCH_HOLDER": "Search for Services"
+  },
+  "DEMANDS": {
+    "NAME": "Name",
+    "LOADING": "Loading ...",
+    "LATEST": "Latest Demands",
+    "NO_DEMAND": "You don't have any recent demands",
+    "DEMAND": "Look for Services",
+    "DEMAND_WELCOME": "One of our employees will contact you as soon as possible about your request."
+  },
+  "PROFILE": {
+    "CHANGE": "Chamge Profile",
+    "EDIT": "ٍSettings",
+    "LANG": "Changer the language",
+    "NAME": "Name",
+    "PHONE": "Phone",
+    "MAIL": "Email",
+    "DATE": "Registration Date",
+    "ADDRESS": "Address",
+    "PASS": "Password",
+    "SAVE": "Save",
+    "NOM_HOLDER": "Enter your name",
+    "PASS_HOLDER": "Enter a Password",
+    "PHONE_HOLDER": "Enter Phone number",
+    "EMAIL_HOLDER": "Enter your Email",
+    "USERNAME_ERROR": "Username already taken. Try another one",
+    "DELETE": "Delete account",
+    "DELETE_MSG": "Why do you want to delete your account? ",
+    "DELETE_DETAILS": "For deleting your account, contact us via email or WhatsApp",
+    "DELETE_EMAIL": "Contact Us"
+  },
+  "REGISTRATION": {
+    "REGISTER": "Register",
+    "LOGIN": "Login",
+    "CREATE": "Create an account",
+    "USERNAME": "Username",
+    "EMAIL": "Email",
+    "PASS": "Password",
+    "PHONE": "Phone",
+    "ADDRESS": "Address",
+    "NOACCOUNT": "If you don't have an account ",
+    "ACCOUNT": "If you have an account",
+    "PHONE-ERROR": "The Phone number is incorrect",
+    "PHONE-HELP": "Phone number pattern: 31234567",
+    "EMAIl-ERROR": "",
+    "EMAIL-HELP": "",
+    "PASS-ERROR": "Password is incorrect",
+    "PASS-HELP": "Password should include a uppercase letter, lowercase letter,a number, and a special character",
+    "LOGIN_ERROR": "Username and Password are required"
+  },
+  "MESSAGE": {
+    "TITLE": "Details",
+    "DONE": "The demand was created at:",
+    "LAST": "The last update was: ",
+    "DETAIL": "Demand Details",
+    "DATE": "The demand was for: "
+  }
+}

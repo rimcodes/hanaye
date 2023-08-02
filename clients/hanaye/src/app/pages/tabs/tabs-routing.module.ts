@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
+import { AuthGuard } from 'src/app/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: TabsPage,
+    // canActivate: [AuthGuard],
     children: [
       {
         path: 'home',
@@ -14,18 +16,20 @@ const routes: Routes = [
       },
       {
         path: 'products',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
       },
       {
         path: 'profile',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
       },
       {
         path: '',
         redirectTo: 'home',
         pathMatch: 'full'
-      }
-    ]
+      },
+    ],
   },
 ];
 
