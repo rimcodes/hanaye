@@ -17,7 +17,7 @@ export class TabsPage implements OnInit {
     this.translate.addLangs(['ar', 'fr'])
     // Set default language
     this.translate.setDefaultLang(this.translatingService.defaultLang);
-    document.dir = "rtl";
+    // document.dir = "rtl";
   }
 
   ngOnInit() {

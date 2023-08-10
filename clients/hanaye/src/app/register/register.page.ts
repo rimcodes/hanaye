@@ -84,16 +84,13 @@ export class RegisterPage implements OnInit {
 
   private _initForm() {
     this.form = this.formBuilder.group({
-      username: ['', Validators.required],
+      name: [''],
+      phone: [null, Validators.required],
       password: [
         null,
-        Validators.compose([
-          // 1. Password Field is Required
-          Validators.required,
-        ]),
+        Validators.required,
       ],
       // phone: ['', !this.platform.is('ios') ?? Validators.required ],
-      phone: this.platform.is('ios') ? [''] : ['', Validators.required],
       email: [''],
       address: [''],
     });

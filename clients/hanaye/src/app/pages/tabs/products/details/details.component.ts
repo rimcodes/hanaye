@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { TranslatingService } from 'src/app/services/translate.service';
@@ -12,7 +11,6 @@ import { TranslatingService } from 'src/app/services/translate.service';
   styleUrls: ['./details.component.scss'],
 })
 export class DetailsComponent  implements OnInit {
-  product$!: Observable<Product>
   product!: Product
 
   constructor(

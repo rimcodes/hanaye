@@ -2,9 +2,7 @@
   <ion-toolbar>
     <div slot="start" class="bg-white rounded-lg">
       <ion-buttons>
-        <ion-menu-button>
-          <ion-icon name="heart" size="large" color="danger"></ion-icon>
-        </ion-menu-button>
+        <ion-menu-button> </ion-menu-button>
       </ion-buttons>
     </div>
 
@@ -13,18 +11,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <div class="m-3">
+  <div class="p-3 bg-neutral-100">
     <ng-template #loadingProducts>
       <app-loading></app-loading>
     </ng-template>
     <!-- Products -->
     <ng-container *ngIf="products$ | async as products; else loadingProducts">
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap justify-between">
+        <!-- [routerLink]="['', 'tabs', 'products', 'details', item.id ]" -->
         <app-product-item
           *ngFor="let item of products; let i = index"
-          [routerLink]="['', 'tabs', 'products', 'details', item.id ]"
           [product]="item"
-          class="w-1/2"
+          class="w-[48%] my-3"
           [even]="i % 2 === 0"
         ></app-product-item>
       </div>

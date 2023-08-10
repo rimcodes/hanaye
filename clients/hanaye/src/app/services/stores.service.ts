@@ -20,6 +20,10 @@ export class StoresService {
     return this.http.get<Store>(`${this.catsApiUrl}/${id}`)
   }
 
+  getWorkerStore(userId: string) {
+    return this.http.get<Store>(`${this.catsApiUrl}/user/${userId}`)
+  }
+
   createStore(storeFormData: FormData) {
     return this.http.post(this.catsApiUrl, storeFormData)
   }

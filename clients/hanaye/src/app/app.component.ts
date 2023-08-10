@@ -10,7 +10,7 @@ import { TranslatingService } from './services/translate.service';
 })
 export class AppComponent {
   defaultLang!: 'ar' | 'fr' | 'en'
-  appVersion = '0.0.3'
+  appVersion = '0.0.4'
   constructor(
     private authService: AuthService,
     public translate: TranslateService,
@@ -22,7 +22,7 @@ export class AppComponent {
     translate.setDefaultLang(this.translatingService.defaultLang);
     document.dir = this.translatingService.dir;
     this.defaultLang = this.translatingService.defaultLang
-    console.log('version: 0.0.3')
+    console.log('version: 0.0.4')
   }
 
   onLogout() {

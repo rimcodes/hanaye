@@ -17,8 +17,16 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
 
-  getAllProducts() {
-    return this.http.get<Product[]>(this.productsApiUrl)
+  getAllProducts(filter?: {stores?: string, client?: string}) {
+    if (filter?.stores) {
+      console.log("Stores with id ...")
+      return this.http.get<Product[]>(`${this.productsApiUrl}?stores=${filter?.stores}`)
+    } else if(filter?.client) {
+      console.log("Client with id ...")
+      return this.http.get<Product[]>(`${this.productsApiUrl}?client=${filter?.client}`)
+    } else {
+      return this.http.get<Product[]>(this.productsApiUrl)
+    }
   }
 
   getProduct(id: string) {
@@ -54,7 +62,7 @@ export class ProductsService {
     const favs = this.getFavorites();
 
     const favsItemExist = favs.items.find(
-      (item) => item.serviceId === favItem.serviceId
+      (item) => item.productId === favItem.productId
     );
 
     if (!favsItemExist) {
@@ -67,11 +75,11 @@ export class ProductsService {
     return favs;
   }
 
-  removeFavItem(serviceId: string) {
+  removeFavItem(productId: string) {
     let favs = this.getFavorites();
 
     favs.items = favs.items.filter(
-      (item) => item.serviceId !== serviceId
+      (item) => item.productId !== productId
     );
 
     const favJson = JSON.stringify(favs);
@@ -83,7 +91,7 @@ export class ProductsService {
   checkIfFav(id: string): boolean {
     let isFav = false
     this.getFavorites().items.forEach(item => {
-      if (item.serviceId === id) {
+      if (item.productId === id) {
         isFav = true
         // return
       }

@@ -9,6 +9,8 @@ import { ProductsPageRoutingModule } from './products-routing.module';
 import { ProductsPage } from './products.page';
 import { DetailsComponent } from './details/details.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { StoreComponent } from './store/store.component';
+import { ProvidersComponent } from './providers/providers.component';
 
 @NgModule({
   imports: [
@@ -18,6 +20,11 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ProductsPageRoutingModule,
     SharedModule,
   ],
-  declarations: [ProductsPage, DetailsComponent]
+  declarations: [
+    ProductsPage,
+    DetailsComponent,
+    StoreComponent,
+    ProvidersComponent,
+  ],
 })
 export class ProductsPageModule {}
