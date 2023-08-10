@@ -25,7 +25,7 @@ export class StoresService {
   }
 
   updateStore(storeFormData: FormData) {
-    return this.http.patch(this.catsApiUrl, storeFormData)
+    return this.http.put(this.catsApiUrl, storeFormData)
   }
 
   deleteStore(id: string) {

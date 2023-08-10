@@ -27,7 +27,7 @@ export class DemandsService {
   }
 
   updateDemand(demandFormData: FormData) {
-    return this.http.patch(this.demandsApi, demandFormData)
+    return this.http.put(this.demandsApi, demandFormData)
   }
 
   deleteDemand(id: string) {

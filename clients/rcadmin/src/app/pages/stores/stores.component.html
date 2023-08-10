@@ -17,7 +17,7 @@
     <div matListItemMeta>
       {{ item.details }}
     </div>
-    <button mat-icon-button matListItemMeta>
+    <button [routerLink]="['', 'stores', 'form', item.id]" mat-icon-button matListItemMeta>
       <mat-icon>info</mat-icon>
     </button>
     <button mat-icon-button matListItemMeta>

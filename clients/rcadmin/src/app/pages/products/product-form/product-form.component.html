@@ -13,6 +13,18 @@
 
       <div class="w-1/2 p-3">
         <mat-form-field>
+          <mat-label> مقدم المنتج </mat-label>
+          <mat-select formControlName="worker">
+            <mat-option *ngFor="let user of clients$ | async" [value]="user.id">
+              {{ user.name }}
+            </mat-option>
+
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <div class="w-1/2 p-3">
+        <mat-form-field>
           <mat-label> المتجر </mat-label>
           <mat-select formControlName="store">
             <mat-option *ngFor="let store of stores$ | async" [value]="store.id">

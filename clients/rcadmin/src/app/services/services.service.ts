@@ -25,7 +25,7 @@ export class ServicesService {
   }
 
   updateService(serviceFromData: FormData) {
-    return this.http.patch(this.servicesApiUrl, serviceFromData)
+    return this.http.put(this.servicesApiUrl, serviceFromData)
   }
 
   deleteService(id: string) {

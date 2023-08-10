@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { User } from 'src/app/models/user.model';
 import { StoresService } from 'src/app/services/stores.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-store-form',
@@ -15,16 +18,23 @@ export class StoreFormComponent implements OnInit {
   imageDisplay!: string | ArrayBuffer | null
   panelOpenState!: boolean;
   location?: string;
+  clients$!: Observable<User[]>
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private usersService: UsersService,
     private storesService: StoresService
   ) {}
 
   ngOnInit(): void {
     this.initForm()
     this.checkEditMode()
+    this.loadClients()
+  }
+
+  loadClients() {
+    this.clients$ = this.usersService.getWorkers()
   }
 
   onSubmit() {
@@ -86,6 +96,7 @@ export class StoreFormComponent implements OnInit {
         this.storesService.getStore(params['id'])
           .subscribe((res) => {
             this.storeForm['id'].setValue(res.id)
+            this.storeForm['worker'].setValue(res.worker)
             this.storeForm['name'].setValue(res.name)
             this.storeForm['details'].setValue(res.details)
             this.storeForm['active'].setValue(res.active)
@@ -113,6 +124,7 @@ export class StoreFormComponent implements OnInit {
   private initForm() {
     this.form = this.formBuilder.group({
       id: [''],
+      worker: ['', Validators.required],
       name: ['', Validators.required],
       details: [''],
       active: [true],

@@ -25,7 +25,7 @@ export class PromotionsService {
   }
 
   updatePromotion(promotionFormData: FormData) {
-    return this.http.patch(this.promotionsApiUrl, promotionFormData)
+    return this.http.put(this.promotionsApiUrl, promotionFormData)
   }
 
   deletePromotion(id: string) {

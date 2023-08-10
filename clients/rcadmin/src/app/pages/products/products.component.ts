@@ -21,7 +21,7 @@ export class ProductsComponent implements OnInit {
 
   dataSource = new MatTableDataSource(this.products)
 
-  columnsToDisplay = ['title', 'store', 'createdAt'];
+  columnsToDisplay = ['title', 'store', 'createdAt', 'buttons'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement!: Product | null;
 

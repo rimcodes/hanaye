@@ -3,8 +3,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store } from 'src/app/models/store.model';
+import { User } from 'src/app/models/user.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoresService } from 'src/app/services/stores.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-product-form',
@@ -17,18 +19,22 @@ export class ProductFormComponent implements OnInit {
   editMode = false
   imageDisplay!: string | ArrayBuffer | null
   stores$!: Observable<Store[]>
+  clients$!: Observable<User[]>
 
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private productsService: ProductsService,
     private storesService: StoresService,
+    private usersService: UsersService
   ) {}
 
   ngOnInit(): void {
     this.initForm()
     this.checkEditMode()
     this.loadStores()
+    this.loadClients()
+
   }
 
   onSubmit() {
@@ -51,6 +57,10 @@ export class ProductFormComponent implements OnInit {
 
   loadStores() {
     this.stores$ = this.storesService.getAllStores()
+  }
+
+  loadClients() {
+    this.clients$ = this.usersService.getWorkers()
   }
 
   private createProduct(productFormData: FormData) {
@@ -88,6 +98,7 @@ export class ProductFormComponent implements OnInit {
         this.productsService.getProduct(params['id'])
           .subscribe((res) => {
             this.productForm['id'].setValue(res.id)
+            this.productForm['worker'].setValue(res.worker)
             this.productForm['store'].setValue(res.store.id)
             this.productForm['title'].setValue(res.title)
             this.productForm['price'].setValue(res.price)
@@ -116,6 +127,7 @@ export class ProductFormComponent implements OnInit {
   private initForm() {
     this.form = this.formBuilder.group({
       id: [''],
+      worker: [''],
       store: ['', Validators.required],
       title: ['', Validators.required],
       price: [''],

@@ -43,6 +43,18 @@
         </td>
       </ng-container>
 
+      <ng-container matColumnDef="buttons">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <button [routerLink]="['', 'products', 'form', element.id]" mat-icon-button matListItemMeta>
+            <mat-icon color="primary">info</mat-icon>
+          </button>
+          <button mat-icon-button matListItemMeta>
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
       <ng-container matColumnDef="expand">
         <th mat-header-cell *matHeaderCellDef aria-label="row actions">
           &nbsp;

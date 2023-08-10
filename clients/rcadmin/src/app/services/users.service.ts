@@ -46,7 +46,7 @@ export class UsersService {
   }
 
   updateUser(userFormData: FormData) {
-    return this.http.patch(this.usersApiUrl, userFormData)
+    return this.http.put(this.usersApiUrl, userFormData)
   }
 
   deleteUser(id: string) {

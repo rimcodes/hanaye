@@ -25,7 +25,7 @@ export class ProductsService {
   }
 
   updateProduct(productFromData: FormData) {
-    return this.http.patch(this.productsApiUrl, productFromData)
+    return this.http.put(this.productsApiUrl, productFromData)
   }
 
   deleteProduct(id: string) {
