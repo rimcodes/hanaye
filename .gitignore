@@ -1,5 +1,5 @@
 node_modules
 .env
-clients/hanaye/environments
-clients/rcadmin/environments
+clients/hanaye/src/environments
+clients/rcadmin/src/environments
 db
