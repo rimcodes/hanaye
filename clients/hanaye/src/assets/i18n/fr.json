@@ -17,6 +17,11 @@
     "PROFILE": "Profile"
   },
   "HOME": {
+    "HEADERS": {
+      "PROVIDERS": "Prestataires de services",
+      "FEATS": "Pour toi",
+      "PRODUCTS": "Produits"
+    },
     "HELLO": "Salut",
     "MESSAGE": "Hanaye App pour les meilleure produits et services ",
     "MORE": "Plus",
@@ -28,7 +33,8 @@
     "SERVICES": "Services",
     "ADD": "Ajouter aux Favouries",
     "REQUEST": "Demandez",
-    "SEARCH_HOLDER": "Chercher des Services"
+    "SEARCH_HOLDER": "Chercher des Services",
+    "SEARCH_LABEL": "Chercher"
   },
   "DEMANDS": {
     "NAME": "Nom",

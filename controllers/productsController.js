@@ -15,6 +15,8 @@ const getAllProducts = asyncHandler(async (req, res) => {
 
     if(req.query.stores) {
         products = await Product.find({ store: req.query.stores }).populate('store')
+    } else if (req.query.client) {
+        products = await Product.find({ worker: req.query.client }).populate('store')
     } else {
         products = await Product.find().populate('store')
     }
@@ -24,6 +26,18 @@ const getAllProducts = asyncHandler(async (req, res) => {
     }
 
     res.json(products)
+})
+
+const getClientProducts = asyncHandler(async (req, res) => {
+    let clentProducts;
+
+    if (req.query.client) {
+        clentProducts = await Product.find({ user: req.query.client }).populate('store')
+    } else {
+        clentProducts = await Product.find().populate('store')
+    }
+
+    res.json(clentProducts)
 })
 
 /**
@@ -52,7 +66,7 @@ const getProduct = asyncHandler(async (req, res) => {
  */
 const createNewProduct = asyncHandler(async (req, res) => {
     // Create a new Product
-    const { store, title, price, details } = req.body
+    const { store, title, price, details, worker } = req.body
 
     if (!title || !store ) {
         return res.status(400).json({ message: 'All this fields ( title and store) are required'})
@@ -71,7 +85,7 @@ const createNewProduct = asyncHandler(async (req, res) => {
         imagePath = `${basePath}${fileName}`;
     }
     // Create and store product
-    const productObject = { store, title, price, details, image: imagePath }
+    const productObject = { store, title, price, details, worker, image: imagePath }
     const product = await Product.create(productObject)
 
     if (product) {
@@ -89,7 +103,7 @@ const createNewProduct = asyncHandler(async (req, res) => {
  */
 const updateProduct = asyncHandler(async (req, res) => {
     // Update a Product
-    const { id, store, title, price, details, active } = req.body
+    const { id, store, title, price, worker, details, active } = req.body
 
     if ( !id ) {
         return res.status(400).json({ message: 'Field is required'})
@@ -115,6 +129,7 @@ const updateProduct = asyncHandler(async (req, res) => {
     product.store = store
     product.title = title
     product.price = price
+    product.worker = worker
     product.details = details
     product.active = active
 
@@ -151,6 +166,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 module.exports = {
     getAllProducts,
+    getClientProducts,
     getProduct,
     createNewProduct,
     updateProduct,

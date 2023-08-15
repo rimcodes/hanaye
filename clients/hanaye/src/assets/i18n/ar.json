@@ -17,6 +17,11 @@
     "PROFILE": "الصفحة الشخصية"
   },
   "HOME": {
+    "HEADERS": {
+      "PROVIDERS": "مقدمات الخدمات",
+      "FEATS": "خصيصا لكي",
+      "PRODUCTS": "المنتجات"
+    },
     "HELLO": "مرحبا",
     "MESSAGE": "تطبيق الحناية لأفضل منتجات التجميل",
     "MORE": "المزيد",
@@ -28,7 +33,8 @@
     "SERVICES": "الخدمات",
     "ADD": "إضافة الى المفضلة",
     "REQUEST": "طلب",
-    "SEARCH_HOLDER": "ابحث عن خدمة "
+    "SEARCH_HOLDER": "ابحث عن خدمة ",
+    "SEARCH_LABEL": "البحث"
   },
   "DEMANDS": {
     "NAME": "الاسم",

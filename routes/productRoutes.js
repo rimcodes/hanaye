@@ -50,7 +50,7 @@ const uploadS3 = multer({
 router.route('/')
     .get(productsController.getAllProducts)
     .post(uploadS3.single('image'), productsController.createNewProduct)
-    .patch(uploadS3.single('image'), productsController.updateProduct)
+    .put(uploadS3.single('image'), productsController.updateProduct)
     .delete(productsController.deleteProduct)
 
 router.route('/:id')

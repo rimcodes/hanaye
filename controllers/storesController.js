@@ -38,13 +38,31 @@ const getStore = asyncHandler(async (req, res) => {
 })
 
 /**
+ * @desc Get single user store for showning details
+ * @route Get /stores/user/:userid
+ * @access Public
+ */
+const getWorkerStore = asyncHandler(async (req, res) => {
+    const { userid } = req.params
+
+    const store = await Store.findOne({ worker: userid })
+
+    if (!store) {
+        res.status(400).json({ message: 'No Store with user with the given id!'})
+    }
+
+    res.send(store)
+
+})
+
+/**
  * @desc Create a new store
  * @route Post /stores
  * @access Public
  */
 const createNewStore = asyncHandler(async (req, res) => {
-    // Create a new Category
-    const { name, details, location } = req.body
+    // Create a new Store
+    const { name, details, location, worker } = req.body
 
     if ( !name || !location  ) {
         return res.status(400).json({ message: 'All fields(name, location) are required'})
@@ -67,12 +85,12 @@ const createNewStore = asyncHandler(async (req, res) => {
     let storeObject = {}
 
     // image: imagePath
-    storeObject = { name, details, location, image: imagePath  }
+    storeObject = { name, details, location, image: imagePath, worker  }
 
     // Create and store service
     const createdStore = await Store.create(storeObject)
 
-    // createdCategory = await createdCategory.save()
+    // createdStore = await createdStore.save()
 
     if (createdStore) {
         res.status(201).json({ message: `New store created`, createdStore})
@@ -88,16 +106,16 @@ const createNewStore = asyncHandler(async (req, res) => {
  */
 const updateStore = asyncHandler(async (req, res) => {
     // Update a Store
-    const { id, name, details, location, active } = req.body
+    const { id, name, details, location, active, worker } = req.body
 
     if ( !id ) {
         return res.status(400).json({ message: 'id is required'})
     }
 
     // Confirm service exists to update
-    const editedStore = await Category.findById(id)
+    const editedStore = await Store.findById(id)
     if (!editedStore) {
-        return res.status(400).json({ message: 'Category not found'})
+        return res.status(400).json({ message: 'Store not found'})
     }
 
     const file = req.file;
@@ -112,6 +130,7 @@ const updateStore = asyncHandler(async (req, res) => {
     }
 
     editedStore.name = name
+    editedStore.worker = worker
     editedStore.details = details
     editedStore.location = location
     editedStore.active = active
@@ -135,9 +154,9 @@ const deleteStore = asyncHandler(async (req, res) => {
     }
 
     // Need further work for implementing this feature
-    // const service = await Service.findOne({ category: id }).lean().exec()
+    // const service = await Service.findOne({ Store: id }).lean().exec()
     // if(service) {
-    //     return res.status(400).json({ message: 'Category has services assigned to it'})
+    //     return res.status(400).json({ message: 'Store has services assigned to it'})
     // }
 
     // Confirm store exists to delete
@@ -156,6 +175,7 @@ const deleteStore = asyncHandler(async (req, res) => {
 module.exports = {
     getAllStores,
     getStore,
+    getWorkerStore,
     createNewStore,
     updateStore,
     deleteStore

@@ -6,6 +6,10 @@ const storeSchema = mongoose.Schema(
             type: String,
             require: true
         },
+        worker: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
         details: {
             type: String
         },
@@ -13,7 +17,7 @@ const storeSchema = mongoose.Schema(
             type: Boolean,
             default: true
         },
-        loaction: {
+        location: {
             type: String
         },
         image: {

@@ -7,7 +7,7 @@
         </ion-buttons>
       </div>
       <div class="text-center text-neutral-900 dark:text-white">
-        <ion-title> {{ 'APP_NAME' | translate}} </ion-title>
+        <ion-title class="text-2xl"> {{ 'APP_NAME' | translate}} </ion-title>
       </div>
       <!-- <div slot="end">
         <img
@@ -33,9 +33,24 @@
       <app-popular-products></app-popular-products>
     </div> -->
 
+    <!-- Search -->
+    <div class="mx-3 my-5 bg-inherit">
+      <ion-input
+        labelPlacement="floating"
+        fill="outline"
+        placeholder="{{ 'HOME.SEARCH_HOLDER' | translate }}"
+      >
+        <div slot="label">{{ 'HOME.SEARCH_LABEL' | translate }}</div>
+      </ion-input>
+    </div>
+
+    <!-- Providers -->
+    <div class="mx-5 my-3">
+      <h3 class="text-neutral-700 text-xl">{{ 'HOME.HEADERS.PROVIDERS' | translate }}</h3>
+    </div>
     <ng-template #loadingProfiles>
       <div class="p-10">
-        <app-loading></app-loading>
+        <app-loading size="w-16 h-16"></app-loading>
       </div>
     </ng-template>
 
@@ -68,6 +83,10 @@
       </div>
     </ng-container>
 
+    <!-- Featured products -->
+    <div class="mx-5 my-3">
+      <h3 class="text-neutral-700 text-xl">{{ 'HOME.HEADERS.FEATS' | translate }}</h3>
+    </div>
     <ng-container
       *ngIf="products; else loadingHomeProducts"
     >
@@ -108,6 +127,9 @@
 
     <!-- Products -->
     <div class="my-5">
+      <div class="mx-5 my-3">
+        <h3 class="text-neutral-700 text-xl">{{ 'HOME.HEADERS.PRODUCTS' | translate }}</h3>
+      </div>
       <ng-template #loadingHomeProducts>
         <app-loading></app-loading>
       </ng-template>
