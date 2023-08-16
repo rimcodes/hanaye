@@ -16,11 +16,11 @@
     <div matListItemMeta>
       {{ item.address }}
     </div>
-    <button mat-icon-button matListItemMeta>
-      <mat-icon>info</mat-icon>
+    <button [routerLink]="['', 'users', 'form', item.id]" mat-icon-button matListItemMeta>
+      <mat-icon color="primary">info</mat-icon>
     </button>
-    <button mat-icon-button matListItemMeta>
-      <mat-icon>delete</mat-icon>
+    <button (click)="deleteUser(item)" mat-icon-button matListItemMeta>
+      <mat-icon color="warn">delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-list>

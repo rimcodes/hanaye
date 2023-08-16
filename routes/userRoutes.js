@@ -52,7 +52,7 @@ const uploadS3 = multer({
 router.route('/')
     .get(usersController.getAllUsers)
     .post(uploadS3.single('image'), usersController.createNewUser)
-    .patch(uploadS3.single('image'), usersController.updateUser)
+    .put(uploadS3.single('image'), usersController.updateUser)
     .delete(usersController.deleteUser)
 
 router.route('/clients')

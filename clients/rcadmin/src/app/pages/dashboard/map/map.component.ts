@@ -43,7 +43,7 @@ export class MapComponent implements OnInit, OnChanges {
   clusterApiLoaded!: Observable<boolean>;
   options: google.maps.MapOptions = {
     center: { lat: 18.077819265626548, lng: -15.96880064486457 },
-    zoom: 12,
+    zoom: 14.5,
   };
   @ViewChild(MapInfoWindow) infoWindow!: MapInfoWindow;
 

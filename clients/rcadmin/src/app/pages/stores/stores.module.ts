@@ -20,6 +20,8 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatSlideToggleModule,
     MatExpansionModule,
     MatSelectModule,
+    MatSnackBarModule,
   ]
 })
 export class StoresModule { }

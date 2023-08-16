@@ -122,7 +122,7 @@ const createNewUser = asyncHandler( async (req, res) => {
 
 /**
  * @desc Update a user
- * @route PATCH /users
+ * @route PUT /users
  * @access Private
  */
 const updateUser = asyncHandler(async (req, res) => {
@@ -133,7 +133,7 @@ const updateUser = asyncHandler(async (req, res) => {
         return res.status(400).json({ message: 'All fields are required'})
     }
 
-    const user = await User.findById(id).exec()
+    const user = await User.findById(id)
 
     if(!user) {
         return res.status(400).json({ message: 'User not found' })

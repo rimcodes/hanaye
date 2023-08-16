@@ -1,6 +1,6 @@
 <mat-list>
   <div class="flex justify-between items-center ">
-    <div class="text-lg font-bold px-3 my-3">
+    <div class="text-lg font-bold px-3 my-3 pt-3">
       المتاجر
     </div>
     <mat-action-list>
@@ -18,10 +18,10 @@
       {{ item.details }}
     </div>
     <button [routerLink]="['', 'stores', 'form', item.id]" mat-icon-button matListItemMeta>
-      <mat-icon>info</mat-icon>
+      <mat-icon color="primary">info</mat-icon>
     </button>
-    <button mat-icon-button matListItemMeta>
-      <mat-icon>delete</mat-icon>
+    <button (click)="deleteStore(item)" mat-icon-button matListItemMeta>
+      <mat-icon color="warn">delete</mat-icon>
     </button>
   </mat-list-item>
 </mat-list>

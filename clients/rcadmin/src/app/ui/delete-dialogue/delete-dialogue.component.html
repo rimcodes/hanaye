@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>هل انت متأكد </h1>
+<p mat-dialog-content>
+  انت الان ستحذف العنصر: {{ data.name }}
+</p>
+<div mat-dialog-actions>
+  <button mat-raised-button mat-dialog-close="" (click)="onNoClick()" color="primary">إلغاء</button>
+  <button mat-raised-button (click)="confirmDelete(data.model.id ?? '')" color="warn">حذف</button>
+</div>

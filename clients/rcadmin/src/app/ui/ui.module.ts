@@ -8,13 +8,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
+import { SnackMessageComponent } from './snack-message/snack-message.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DeleteDialogueComponent } from './delete-dialogue/delete-dialogue.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
 @NgModule({
   declarations: [
     NavComponent,
-    FooterComponent
+    FooterComponent,
+    SnackMessageComponent,
+    DeleteDialogueComponent
   ],
   imports: [
     CommonModule,
@@ -23,10 +29,14 @@ import { RouterModule } from '@angular/router';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
+    MatDialogModule,
   ],
   exports: [
+    SnackMessageComponent,
     NavComponent,
+    DeleteDialogueComponent
   ]
 })
 export class UiModule { }

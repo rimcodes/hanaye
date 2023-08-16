@@ -1,7 +1,11 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { timer } from 'rxjs';
 import { UsersService } from 'src/app/services/users.service';
+import { SnackMessageComponent } from 'src/app/ui/snack-message/snack-message.component';
 
 @Component({
   selector: 'app-user-form',
@@ -20,7 +24,9 @@ export class UserFormComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private locationService: Location,
+    private _snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -73,28 +79,32 @@ export class UserFormComponent implements OnInit {
     this.usersService.createUser(userFormData).subscribe({
       next: (res) => {
         // Snackbar for creating property
-        console.log(res);
         this.isSubmitted = false;
+        this.openSnackBar('تم انشاء متجر جديدة', 'انشاء متجر آخرى', 'success');
+        timer(4000).subscribe(() => this.locationService.back());
       },
       error: (err) => {
         // Snackbar for error
         console.log(err);
         this.isSubmitted = false;
+        this.openSnackBar('خطأ', 'حدث خطأ ما', 'success');
       },
     });
   }
 
   private updateUser(userFormData: FormData) {
-    this.usersService.createUser(userFormData).subscribe({
+    this.usersService.updateUser(userFormData).subscribe({
       next: (res) => {
         // Snackbar for creating property
-        console.log(res);
         this.isSubmitted = false;
+        this.openSnackBar('تم انشاء متجر جديدة', 'انشاء متجر آخرى', 'success');
+        timer(4000).subscribe(() => this.locationService.back());
       },
       error: (err) => {
         // Snackbar for error
         console.log(err);
         this.isSubmitted = false;
+        this.openSnackBar('خطأ', 'حدث خطأ ما', 'success');
       },
     });
   }
@@ -128,6 +138,13 @@ export class UserFormComponent implements OnInit {
       address: [''],
       image: [''],
       location: [''],
+    });
+  }
+
+  openSnackBar(message: string, action: string, status: string) {
+    this._snackBar.openFromComponent(SnackMessageComponent, {
+      duration: 3 * 1000,
+      data: { message, action, status },
     });
   }
 
