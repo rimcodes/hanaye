@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="store">{{ store!.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ng-template #loading>
+    <app-loading></app-loading>
+  </ng-template>
+
+  <ng-container *ngIf="products$ |async as products; else loading">
+    <ion-list>
+      <ion-item *ngFor="let item of products" [routerLink]="['', 'tabs', 'products', 'details', item.id]" detail>
+        <ion-thumbnail style="width: 144px; height: auto;">
+          <ion-img [src]="item.image"></ion-img>
+        </ion-thumbnail>
+        <div class="mx-5 ">
+          <h3 class="text-lg">{{ item.title }}</h3>
+          <span class="text-neutral-600">{{ item.price }}</span>
+        </div>
+
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>

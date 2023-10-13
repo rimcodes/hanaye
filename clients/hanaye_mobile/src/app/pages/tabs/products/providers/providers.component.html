@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="client" class="capitalize">{{ client.name }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <section class="text-gray-600 body-font">
+    <div class="container px-1 py-8 flex flex-wrap flex-col">
+      <div class="flex justify-between mb-2 border-b-black border-b-2">
+        <a class="sm:px-6 py-3 w-1/4 sm:w-auto justify-center sm:justify-start border-b-2 title-font font-medium bg-gray-100 inline-flex items-center leading-none border-indigo-500 text-indigo-500 tracking-wider rounded-xl">
+          <img [src]="client.image" alt="">
+        </a>
+        <div class="flex-1"></div>
+        <span></span>
+      </div>
+      <img *ngIf="store" class="xl:w-1/4 lg:w-1/3 md:w-1/2 w-full mt-5 block mx-auto mb-10 object-cover object-center rounded" alt="hero" [src]="store.image">
+      <ng-template #loadingStore>
+        <app-loading size="w-8 h-8"></app-loading>
+      </ng-template>
+      <div *ngIf="store; else loadingStore" class="flex flex-col text-center w-full">
+        <h1 class="text-xl font-medium title-font mb-4 text-gray-900">{{ store.name }}</h1>
+        <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
+          {{ store.details }}
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <ng-template #loading>
+    <ng-container *ngIf="!noProducts">
+      <app-loading></app-loading>
+    </ng-container>
+    <ng-container *ngIf="noProducts">
+      <div>{{ 'NO_PRODUCTS' | translate }}</div>
+    </ng-container>
+  </ng-template>
+
+  <ng-container *ngIf="products$ |async as products; else loading">
+    <ion-list>
+      <ion-item *ngFor="let item of products" [routerLink]="['', 'tabs', 'products', 'details', item.id]" detail>
+        <ion-thumbnail style="width: 144px; height: auto;">
+          <ion-img [src]="item.image"></ion-img>
+        </ion-thumbnail>
+        <div class="mx-5 ">
+          <h3 class="text-lg">{{ item.title }}</h3>
+          <span class="text-neutral-600">{{ item.price }}</span>
+        </div>
+
+      </ion-item>
+    </ion-list>
+  </ng-container>
+
+</ion-content>

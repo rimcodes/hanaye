@@ -50,7 +50,12 @@ const getProduct = asyncHandler(async (req, res) => {
 
     const { id } = req.params
 
-    const product = await Product.findById(id).populate('store')
+    const product = await Product.findById(id).populate({
+        path: 'store',
+        populate: {
+          path: 'worker',
+          model: 'User'
+        } })
     // const product = await Product.findById(id)
     if(!product) {
         return res.status(400).json({ message: 'No Product found with given id'})

@@ -1,0 +1,100 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div slot="start" class="bg-white rounded-lg">
+      <ion-buttons>
+        <ion-menu-button>
+        </ion-menu-button>
+      </ion-buttons>
+    </div>
+    <div class="text-center">
+      <ion-title> {{ 'TABS.PROFILE' | translate }} </ion-title>
+    </div>
+    <ion-buttons slot="end">
+      <ion-button color="primary" routerLink="edit">
+        <ion-icon slot="icon-only" name="create"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ng-template #loadingUser>
+    <app-loading></app-loading>
+  </ng-template>
+  <ng-container *ngIf="user; else loadingUser">
+    <div class="flex flex-col items-center m-5">
+      <div class="w-80">
+        <img class="w-full rounded-3xl" [src]=" user.image ?? 'assets/holders/user.jpg'" alt="user profile photo">
+      </div>
+
+      <div class="w-full">
+        <ion-list>
+          <ion-item>
+            <ion-label>
+              <h2>{{ 'PROFILE.NAME' | translate }}</h2>
+              <ion-text>{{ user.name }}</ion-text>
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>{{ 'PROFILE.PHONE' | translate }}</h2>
+              <ion-text>{{ user.phone }}</ion-text>
+            </ion-label>
+            <ion-icon name="call-outline"></ion-icon>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>
+              <h2>{{ 'PROFILE.DATE' | translate }}</h2>
+              <ion-text>{{ user.createdAt | date }}</ion-text>
+            </ion-label>
+            <ion-icon name="calendar-outline"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-label>
+              <h2>{{ 'PROFILE.ADDRESS' | translate }}</h2>
+              <ion-text>{{ user.address }}</ion-text>
+            </ion-label>
+            <ion-icon name="location-outline"></ion-icon>
+          </ion-item>
+        </ion-list>
+
+      </div>
+
+    </div>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-accordion-group>
+          <ion-accordion value="first">
+            <ion-item slot="header" color="light">
+              <ion-icon name="cog" slot="start"></ion-icon>
+              <ion-label>{{ 'PROFILE.LANG' | translate }}</ion-label>
+            </ion-item>
+            <div class="ion-padding" slot="content">
+              <ion-list>
+                <ion-radio-group value="ar">
+                  <ion-item *ngFor="let lang of langs">
+                    <ion-thumbnail>
+                      <ion-img [src]="lang.img"></ion-img>
+                    </ion-thumbnail>
+                    <ion-radio
+                      slot="end"
+                      [value]="lang.lang"
+                      #input
+                      (click)="translateLanguageTo(input.value)"
+                    >
+                      {{ lang.name }}
+                    </ion-radio>
+                  </ion-item>
+                </ion-radio-group>
+              </ion-list>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card>
+
+  </ng-container>
+</ion-content>

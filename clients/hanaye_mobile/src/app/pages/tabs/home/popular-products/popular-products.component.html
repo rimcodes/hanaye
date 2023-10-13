@@ -1,0 +1,53 @@
+<!-- <div class="my-5 flex justify-between items-center">
+  <h1 class="text-lg font-semibold">
+    {{ "HOME.FOR_YOU" | translate }}
+  </h1>
+
+  <div
+    class="flex items-center cursor-pointer"
+    [routerLink]="['', 'tabs', 'products']"
+  >
+    <span class="text-sm text-neutral-600 mx-1">
+      {{ "HOME.MORE" | translate }}
+    </span>
+    <ion-icon name="chevron-forward-outline"></ion-icon>
+  </div>
+</div>
+
+<ng-template #loadingSlider>
+  <app-loading></app-loading>
+</ng-template>
+
+<swiper-container
+  slides-per-view="1.3"
+  space-between="30"
+  speed="500"
+  loop="true"
+  pagination="true"
+  pagination-dynamic-bullets="true"
+  css-mode="true"
+  navigation="false"
+>
+  <ng-container *ngIf="products$ | async as products; else loadingSlider">
+
+    <swiper-slide *ngFor="let item of products">
+      <div
+        class="border bg-white flex flex-col justify-center items-center"
+      >
+        <div>
+          <img
+            class="rounded-xl my-3 w-52 h-52"
+            [src]="item.image"
+            alt=""
+          />
+        </div>
+        <div class="text-center my-3">
+          <h3>{{ item.title }}</h3>
+          <ion-button class="text-neutral-600 text-lg" [routerLink]="['', 'tabs', 'products', 'store', item.store.id]">{{ item.store.name }}</ion-button>
+          <p>{{ item.price }}</p>
+        </div>
+      </div>
+    </swiper-slide>
+
+  </ng-container>
+</swiper-container> -->

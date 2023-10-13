@@ -1,0 +1,100 @@
+
+
+<ion-content>
+  <div>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+  </div>
+  <div class="flex flex-col items-center m-5">
+    <ion-img class="w-60" src="assets/logos/logo.png"></ion-img>
+    <ion-title>{{ "REGISTRATION.CREATE" | translate }}</ion-title>
+    <div class="w-full ">
+      <form class="w-full" [formGroup]="form" autocomplete="off">
+        <ion-list>
+          <!-- <ion-label>{{ "REGISTRATION.USERNAME" | translate }}</ion-label> -->
+          <ion-item>
+            <ion-input
+            label="{{ 'REGISTRATION.PHONE' | translate }}"
+            formControlName="phone"
+            type="tel"
+            pattern="[2-4]{1}[0-9]{7}"
+            placeholder="النمط: 31234567"
+            >
+          </ion-input>
+          <!-- <ion-note slot="helper"
+            >{{ "REGISTRATION.PHONE-HELP" | translate }}</ion-note
+            >
+            <ion-note slot="error"
+            >{{ "REGISTRATION.PHONE-ERROR" | translate }}</ion-note
+            > -->
+          </ion-item>
+          <ion-item>
+            <ion-input
+              label="{{ 'REGISTRATION.USERNAME' | translate }}"
+              formControlName="name"
+              type="text"
+            ></ion-input>
+          </ion-item>
+          <ion-text color="danger" *ngIf="nameIsTaken"
+            >{{ "REGISTRATION.USERNAME_ERROR" | translate }}</ion-text
+          >
+          <ion-item>
+            <ion-label>{{ "REGISTRATION.PASS" | translate }}</ion-label>
+            <ion-input formControlName="password" type="password"></ion-input>
+            <!-- <ion-note slot="error"
+              >{{ "REGISTRATION.PASS-ERROR" | translate }}</ion-note
+            > -->
+          </ion-item>
+        </ion-list>
+      </form>
+
+      <div class="w-full my-5 text-center">
+        <ion-button [classList]="'w-6/12'" class="ion-center" (click)="onSubmit()"
+          >{{ "REGISTRATION.REGISTER" | translate }}</ion-button
+        >
+      </div>
+
+      <div class="text-neutral-600 text-center">
+        <p>
+          {{ 'REGISTRATION.NOACCOUNT' | translate}}
+        </p>
+
+        <a routerLink="/login" fill="clear" class="text-neutral-900 font-semibold"
+          >{{ 'REGISTRATION.LOGIN' | translate }}</a
+        >
+      </div>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-accordion-group>
+            <ion-accordion value="first">
+              <ion-item slot="header" color="light">
+                <ion-icon name="language" slot="start"></ion-icon>
+                <ion-label>{{ 'PROFILE.LANG' | translate }}</ion-label>
+              </ion-item>
+              <div class="ion-padding" slot="content">
+                <ion-list>
+                  <ion-radio-group value="ar">
+                    <ion-item *ngFor="let lang of langs">
+                      <ion-thumbnail>
+                        <ion-img [src]="lang.img"></ion-img>
+                      </ion-thumbnail>
+                      <ion-label>{{ lang.name }}</ion-label>
+                      <ion-radio
+                        slot="end"
+                        [value]="lang.lang"
+                        #input
+                        (ionFocus)="translateLanguageTo(input.value)"
+                      ></ion-radio>
+                    </ion-item>
+                  </ion-radio-group>
+                </ion-list>
+              </div>
+            </ion-accordion>
+          </ion-accordion-group>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>

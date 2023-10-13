@@ -49,6 +49,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatExpansionModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatDialogModule
   ]
 })
 export class StoresModule { }
