@@ -1,0 +1,51 @@
+<div
+  class="flex flex-col justify-center items-center h-screen bg-slate-500 bg-cover"
+  style="
+    background-image: url(assets/logos/logo-black.png);
+    background-position: top;
+  "
+>
+  <div class="w-10/12">
+    <ng-template #rimcodes>
+      <app-loading></app-loading>
+    </ng-template>
+
+    <ng-container *ngIf="loading; else rimcodes">
+      <mat-card>
+        <form [formGroup]="form">
+          <mat-grid-list cols="2" rowHeight="100px">
+            <mat-grid-tile colspan="2">
+              <img width="80" src="assets/logos/logo.png" />
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="2">
+              <mat-form-field>
+                <mat-label>رقم الهاتف</mat-label>
+                <input matInput type="tel" formControlName="phone" />
+              </mat-form-field>
+            </mat-grid-tile>
+            <mat-grid-tile colspan="2">
+              <mat-form-field>
+                <mat-label>كلمة السر</mat-label>
+                <input
+                  matInput
+                  [type]="showPass ? 'text' : 'password'"
+                  formControlName="password"
+                />
+                <mat-icon matSuffix (click)="showPassword()"
+                  >visibility</mat-icon
+                >
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile colspan="2">
+              <button mat-raised-button color="primary" (click)="onSubmit()">
+                دخول
+              </button>
+            </mat-grid-tile>
+          </mat-grid-list>
+        </form>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>

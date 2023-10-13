@@ -1,0 +1,29 @@
+<mat-list>
+  <div class="flex justify-between items-center ">
+    <div class="text-lg font-bold px-3 my-3 pt-3">
+      المتاجر
+    </div>
+    <mat-action-list>
+      <button mat-fab color="primary" [routerLink]="['', 'stores', 'form']">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-action-list>
+  </div>
+  <mat-list-item class="border-b-2"  *ngFor="let item of stores$ | async">
+    <img matListItemAvatar [src]="item.image" />
+    <div matListItemTitle>{{ item.name }}</div>
+    <div matListItemLine>{{ item.updatedAt | date }}</div>
+
+    <div matListItemMeta>
+      {{ item.details }}
+    </div>
+    <button [routerLink]="['', 'stores', 'form', item.id]" mat-icon-button matListItemMeta>
+      <mat-icon color="primary">info</mat-icon>
+    </button>
+    <button (click)="deleteStore(item)" mat-icon-button matListItemMeta>
+      <mat-icon color="warn">delete</mat-icon>
+    </button>
+  </mat-list-item>
+</mat-list>
+
+

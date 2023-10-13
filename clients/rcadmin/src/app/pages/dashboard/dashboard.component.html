@@ -1,0 +1,34 @@
+<div class="w-full flex" style="height: calc(100vh - 64px);">
+  <div class="w-9/12">
+    <ng-container *ngIf="stores">
+      <app-map [stores]="stores"></app-map>
+    </ng-container>
+  </div>
+  <div class="w-3/12 h-full bg-slate-100 overflow-x-auto">
+    <div matSubheader class="flex items-center justify-between">
+      <h2>الطلبات</h2>
+
+      <button mat-icon-button class="float-right" color="primary">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
+    <mat-list>
+      <mat-list-item class="border-b-2">
+        <img matListItemAvatar src="assets/holders/demand.jpg" alt="" />
+        <div matListItemTitle>Demand</div>
+        <div matListItemLine>23 jul</div>
+
+        <!-- <div matListItemMeta>
+          Demand details
+        </div> -->
+
+        <div matListItemMeta>
+          <button mat-raised-button color="primary" class="text-white">
+            Edit
+          </button>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
