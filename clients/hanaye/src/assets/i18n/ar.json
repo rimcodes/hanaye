@@ -65,7 +65,9 @@
     "DELETE": "حذف الحساب",
     "DELETE_MSG": "لماذا تريد حذف حسابك؟ ",
     "DELETE_DETAILS": "من اجل حذف الحساب تواصل معنا على الايميل أو الهاتف",
-    "DELETE_EMAIL": "تواصل معنا"
+    "DELETE_EMAIL": "تواصل معنا",
+    "DELETE_DONE": "لقد تم الحذف",
+    "DELETE_UNDONE": "لم يتم الحذف"
   },
   "REGISTRATION": {
     "REGISTER": "تسجبل",

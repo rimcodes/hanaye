@@ -64,7 +64,9 @@
     "DELETE": "Suprimer le compt",
     "DELETE_MSG": "Pour quoi vous voulez suprimer voter compt?",
     "DELETE_DETAILS": "Pour suprimer votre compt contacter nous sur email or WhatsApp",
-    "DELETE_EMAIL": "Contacter Nous"
+    "DELETE_EMAIL": "Contacter Nous",
+    "DELETE_DONE": "Le compte a été supprimé ",
+    "DELETE_UNDONE": "Le compte n'a pas été supprimé"
   },
   "REGISTRATION": {
     "REGISTER": "Enregistrer",

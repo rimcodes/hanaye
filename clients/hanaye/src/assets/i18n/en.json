@@ -66,7 +66,9 @@
     "DELETE": "Delete account",
     "DELETE_MSG": "Why do you want to delete your account? ",
     "DELETE_DETAILS": "For deleting your account, contact us via email or WhatsApp",
-    "DELETE_EMAIL": "Contact Us"
+    "DELETE_EMAIL": "Contact Us",
+    "DELETE_DONE": "Account deleted successfull",
+    "DELETE_UNDONE": "Could not delete account"
   },
   "REGISTRATION": {
     "REGISTER": "Register",

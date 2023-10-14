@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AlertController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { firstValueFrom } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalstorageService } from 'src/app/services/localstorage.service';
@@ -68,7 +69,7 @@ export class ChangeComponent implements OnInit {
     });
   }
 
-  deleteInit(message: string) {
+  async deleteInit(message: string) {
     if (!this.userId) {
       console.log('UserId is invalid', this.userId);
 
@@ -77,6 +78,7 @@ export class ChangeComponent implements OnInit {
     this.authService.inintDeleteUser(message, this.userId).subscribe({
       next: (res) => {
         this.presentAlert('success').then(() => {
+          this.authService.logout()
           this.router.navigate(['/login']);
         });
         console.log(res);
@@ -86,18 +88,21 @@ export class ChangeComponent implements OnInit {
         this.presentAlert('warning');
       },
     });
+    // await this.presentAlert('success')
   }
 
   // Alert ctr
   async presentAlert(status: string) {
+    const deleteSuccess: string = await firstValueFrom(this.translate.get("PROFILE.DELETE_DONE"))
+    const deleteUnSuccess: string = await firstValueFrom(this.translate.get("PROFILE.DELETE_DONE"))
+    console.log(deleteSuccess);
+
     const alert = await this.alertCtr.create({
       header:
         status === 'success'
-          ? '<p>{{ "PROFILE.DELETE_MSG" | translate }}</p>'
-          : 'لقد حدث خطاء ما',
+          ? deleteSuccess
+          : deleteUnSuccess,
       cssClass: status,
-      subHeader: status === 'success' ? 'لم يتم الحذف' : 'لم يتم ارسال الطلب ',
-      message: status === 'success' ? 'لقد تم الحذف' : 'الرجاء اعادت المحاولة',
       buttons: ['OK'],
     });
 
@@ -121,16 +126,25 @@ export class ChangeComponent implements OnInit {
       this.router.navigate(['', 'login']);
       return;
     }
-    this.usersService.getUser(this.userId).subscribe((user: User) => {
-      this.imageDisplay = user.image;
-      this.profileForm['id'].setValue(user.id);
-      this.profileForm['name'].setValue(user.name);
-      this.profileForm['phone'].setValue(user.phone);
-      this.profileForm['address'].setValue(user.address);
+    this.usersService.getUser(this.userId).subscribe(
+      {
+        next: (user: User) => {
+          this.imageDisplay = user.image;
+          this.profileForm['id'].setValue(user.id);
+          this.profileForm['name'].setValue(user.name);
+          this.profileForm['phone'].setValue(user.phone);
+          this.profileForm['address'].setValue(user.address);
 
-      this.profileForm['password'].setValidators([]);
-      this.profileForm['password'].updateValueAndValidity();
-    });
+          this.profileForm['password'].setValidators([]);
+          this.profileForm['password'].updateValueAndValidity();
+        },
+        error: (err) => {
+          this.authService.logout()
+          this.router.navigateByUrl('login')
+        }
+      }
+
+    );
   }
 
   // Upload image and preview

@@ -14,7 +14,7 @@
     <span [routerLink]="['', 'tabs', 'products', 'store', product.store.id]" class="text-neutral-700 text-md">
       {{ product.store.name }}
     </span>
-    <ion-button class="w-2/3">{{ 'HOME.REQUEST' | translate }}</ion-button>
+    <ion-button [routerLink]="['', 'tabs', 'products', 'details', product.id]" class="w-2/3">{{ 'HOME.DETAIL' | translate }}</ion-button>
   </div>
 
 </div>

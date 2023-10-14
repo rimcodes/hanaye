@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
@@ -17,6 +18,7 @@ export class DetailsComponent  implements OnInit {
     private route: ActivatedRoute,
     private productsService: ProductsService,
     public translate: TranslateService,
+    public platform: Platform,
     private translatingService: TranslatingService,
   ) {
     // Register translation languages
@@ -25,6 +27,7 @@ export class DetailsComponent  implements OnInit {
     this.translate.setDefaultLang(translatingService.defaultLang);
     document.dir = "rtl";
   }
+
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
