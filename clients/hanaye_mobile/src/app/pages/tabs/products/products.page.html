@@ -1,0 +1,31 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <div slot="start" class="bg-white rounded-lg">
+      <ion-buttons>
+        <ion-menu-button> </ion-menu-button>
+      </ion-buttons>
+    </div>
+
+    <ion-title>{{ 'TABS.PRODUCTS' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="p-3 bg-neutral-100">
+    <ng-template #loadingProducts>
+      <app-loading></app-loading>
+    </ng-template>
+    <!-- Products -->
+    <ng-container *ngIf="products$ | async as products; else loadingProducts">
+      <div class="flex flex-wrap justify-between">
+        <!-- [routerLink]="['', 'tabs', 'products', 'details', item.id ]" -->
+        <app-product-item
+          *ngFor="let item of products; let i = index"
+          [product]="item"
+          class="w-[48%] my-3"
+          [even]="i % 2 === 0"
+        ></app-product-item>
+      </div>
+    </ng-container>
+  </div>
+</ion-content>

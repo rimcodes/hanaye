@@ -1,0 +1,158 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/profile"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ "PROFILE.EDIT" | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="ion-padding">
+    <ion-card-header>
+      <ion-title>{{ "PROFILE.CHANGE" | translate }}</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="">
+        <form>
+          <div class="relative flex justify-center h-72">
+            <img [src]="imageDisplay" />
+            <div class="absolute top-0 left-10">
+              <ion-fab *ngIf="!platform.is('ios')">
+                <!-- <ion-fab> -->
+                <ion-fab-button (click)="image.click()">
+                  <ion-icon name="image-sharp"></ion-icon>
+                </ion-fab-button>
+              </ion-fab>
+            </div>
+          </div>
+          <input
+            type="file"
+            #image
+            hidden
+            name="image"
+            accept="image/*"
+            (change)="onImageUpload($event)"
+          />
+        </form>
+      </div>
+
+      <form [formGroup]="form" autocomplete="off">
+        <ion-list lines="inset">
+          <input type="text" formControlName="id" hidden />
+          <ion-item>
+            <ion-input
+              labelPlacement="floating"
+              label="{{ 'PROFILE.MAIL' | translate }}"
+              placeholder="{{ 'PROFILE.NOM_HOLDER' | translate }}"
+              type="text"
+              formControlName="name"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              labelPlacement="floating"
+              label="{{ 'PROFILE.PASS' | translate }}"
+              placeholder="{{ 'PROFILE.PASS_HOLDER' | translate }}"
+              type="password"
+              formControlName="password"
+              autocomplete="false"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <!-- Phone number pattern -->
+            <ion-input
+              labelPlacement="floating"
+              label="{{ 'PROFILE.PHONE' | translate }}"
+              placeholder="{{ 'PROFILE.PHONE_HOLDER' | translate }}"
+              formControlName="phone"
+              pattern="[2-4]{1}[0-9]{7}"
+              type="tel"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              labelPlacement="floating"
+              label="{{ 'PROFILE.MAIL' | translate }}"
+              placeholder="{{ 'PROFILE.EMAIL_HOLDER' | translate }}"
+              type="text"
+              formControlName="address"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+    </ion-card-content>
+
+    <div class="flex flex-col">
+      <ion-button color="success" (click)="onSubmit()">Save</ion-button>
+    </div>
+  </ion-card>
+
+  <!-- <ion-card>
+    <ion-card-content>
+      <ion-accordion-group>
+        <ion-accordion value="first">
+          <ion-item slot="header" color="light">
+            <ion-icon name="cog" slot="start"></ion-icon>
+            <ion-label>{{ "PROFILE.LANG" | translate }}</ion-label>
+          </ion-item>
+          <div class="ion-padding" slot="content">
+            <ion-list>
+              <ion-radio-group [value]="defaultLang">
+                <ion-item *ngFor="let lang of langs">
+                  <ion-thumbnail>
+                    <ion-img [src]="lang.img"></ion-img>
+                  </ion-thumbnail>
+                  <ion-label>{{ lang.name }}</ion-label>
+                  <ion-radio
+                    slot="end"
+                    [value]="lang.lang"
+                    #input
+                    (ionFocus)="translateLanguageTo(input.value)"
+                  ></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </ion-list>
+          </div>
+        </ion-accordion>
+      </ion-accordion-group>
+    </ion-card-content>
+  </ion-card> -->
+  <ion-card-content>
+    <ion-accordion-group>
+      <ion-accordion value="first">
+        <ion-item slot="header" color="light">
+          <ion-icon name="trash" slot="start"></ion-icon>
+          <ion-label>{{ "PROFILE.DELETE" | translate }}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <h2>
+            <strong>{{ "PROFILE.DELETE" | translate }}</strong>
+          </h2>
+
+          <ion-list>
+            <ion-item>
+              <ion-label position="floating">{{
+                "PROFILE.DELETE_MSG" | translate
+              }}</ion-label>
+              <ion-input name="message" [(ngModel)]="message"></ion-input>
+            </ion-item>
+
+            <ion-button
+              class="ion-margin ion-padding"
+              color="danger"
+              (click)="deleteInit(message)"
+              ><ion-icon slot="start" name="trash"></ion-icon
+              >{{ "PROFILE.DELETE" | translate }}</ion-button
+            >
+          </ion-list>
+          <!-- <p>{{ 'PROFILE.DELETE_DETAILS' | translate }}</p>
+          <a href="mailto:med4en@gmail.com"
+            >{{ 'PROFILE.DELETE_EMAIL' | translate }}</a
+          > -->
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ion-card-content>
+  <ion-card> </ion-card>
+</ion-content>
