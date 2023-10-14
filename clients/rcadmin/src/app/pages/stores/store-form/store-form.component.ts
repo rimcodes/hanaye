@@ -74,7 +74,7 @@ export class StoreFormComponent implements OnInit {
       },
       error: (err) => {
         this.isSubmitted = false;
-        this.openSnackBar('خطأ', 'حدث خطأ ما', 'success');
+        this.openSnackBar('خطأ', 'حدث خطأ ما', 'warn');
         console.log(err);
       },
     });
@@ -89,7 +89,7 @@ export class StoreFormComponent implements OnInit {
       },
       error: (err) => {
         this.isSubmitted = false;
-        this.openSnackBar('خطأ', 'حدث خطأ ما', 'success');
+        this.openSnackBar('خطأ', 'حدث خطأ ما', 'warn');
         console.log(err);
       },
     });

@@ -1,5 +1,8 @@
 {
   "APP_NAME": "Ghaytek",
+  "NO_PRODUCTS": "No products available",
+  "UPDATE": "Update the App",
+  "UPDATE_TEXT": "Please, update the app to continue using it the application.",
   "NAV": {
     "HOME": "Home",
     "WORK": "Workers Application",
@@ -19,7 +22,7 @@
   "HOME": {
     "HEADERS": {
       "PROVIDERS": "Services providers",
-      "FEATS": "For you",
+      "FEATS": "Featured products",
       "PRODUCTS": "Products"
     },
     "HELLO": "Hello",

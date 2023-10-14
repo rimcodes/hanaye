@@ -1,5 +1,6 @@
 {
   "APP_NAME": "Ghaytek",
+  "NO_PRODUCTS": "Pas de produits pour le moment",
   "NAV": {
     "HOME": "Accueil",
     "FAVS": "Favouries",
@@ -19,7 +20,7 @@
   "HOME": {
     "HEADERS": {
       "PROVIDERS": "Prestataires de services",
-      "FEATS": "Pour toi",
+      "FEATS": "Produits special",
       "PRODUCTS": "Produits"
     },
     "HELLO": "Salut",

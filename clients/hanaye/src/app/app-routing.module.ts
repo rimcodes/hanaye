@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoadLanguageComponent } from './load-language/load-language.component';
+import { UpdateAppComponent } from './pages/update-app/update-app.component';
 
 const routes: Routes = [
   {
     path: 'load',
     component: LoadLanguageComponent
+  },
+  {
+    path: 'update',
+    component: UpdateAppComponent
   },
   {
     path: 'tabs',

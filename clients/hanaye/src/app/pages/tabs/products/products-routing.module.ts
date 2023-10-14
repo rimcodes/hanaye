@@ -26,7 +26,6 @@ const routes: Routes = [
   },
   {
     path: 'details/:id',
-    canActivate: [ActivatedGuard],
     component: DetailsComponent
   }
 ];

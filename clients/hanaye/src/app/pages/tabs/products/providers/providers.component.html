@@ -32,7 +32,12 @@
   </section>
 
   <ng-template #loading>
-    <app-loading></app-loading>
+    <ng-container *ngIf="!noProducts">
+      <app-loading></app-loading>
+    </ng-container>
+    <ng-container *ngIf="noProducts">
+      <div>{{ 'NO_PRODUCTS' | translate }}</div>
+    </ng-container>
   </ng-template>
 
   <ng-container *ngIf="products$ |async as products; else loading">

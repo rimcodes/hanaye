@@ -16,6 +16,7 @@ export class ProvidersComponent implements OnInit {
   client!: any;
   products$!: Observable<Product[]>;
   store!: Store
+  noProducts = false
 
   constructor(
     private router: Router,
@@ -32,6 +33,7 @@ export class ProvidersComponent implements OnInit {
         this.store = res
       },
       error: (err) => {
+        this.noProducts = true
         console.log(err)
       }
     })

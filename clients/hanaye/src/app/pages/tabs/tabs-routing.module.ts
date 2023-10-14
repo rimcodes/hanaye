@@ -3,12 +3,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 import { AuthGuard } from 'src/app/guards/auth.guard';
+import { TrialGuard } from 'src/app/guards/trial.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: TabsPage,
-    // canActivate: [AuthGuard],
+    canActivate: [TrialGuard],
     children: [
       {
         path: 'home',
