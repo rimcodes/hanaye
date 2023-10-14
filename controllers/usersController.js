@@ -68,6 +68,10 @@ const getUser = asyncHandler( async (req, res) => {
     if(!user ) {
         return res.status(400).json({ message: 'No user found'})
     }
+
+    if(!user.active) {
+        return res.status(400).json({ message: 'User not found or inactive'})
+    }
     res.json(user)
 })
 
