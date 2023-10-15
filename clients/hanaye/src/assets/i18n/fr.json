@@ -10,7 +10,9 @@
     "SHARE": "partager l'application",
     "RATE": "évaluer l'application",
     "LOGOUT": "Se déconnecter",
-    "LANG": "Changer la Langue"
+    "LANG": "Changer la Langue",
+    "ABOUT": "Info",
+    "ABOUT_DETAILS": "Pour plus des information contactez nos"
   },
   "TABS": {
     "HOME": "Accueil",

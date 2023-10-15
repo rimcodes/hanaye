@@ -12,7 +12,9 @@
     "SHARE": "partager l'application",
     "RATE": "évaluer l'application",
     "LOGOUT": "Logout",
-    "LANG": "Change the App language"
+    "LANG": "Change the App language",
+    "ABOUT": "About",
+    "ABOUT_DETAILS": "For more details contact us"
   },
   "TABS": {
     "HOME": "Home",

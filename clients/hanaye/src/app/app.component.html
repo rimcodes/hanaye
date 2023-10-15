@@ -22,6 +22,12 @@
           </ion-item>
         </ion-menu-toggle>
         <ion-menu-toggle>
+          <ion-item lines="none" [routerLink]="['', 'about']" button>
+            <ion-icon name="alert-circle-outline" slot="start"></ion-icon>
+            <ion-label>{{ 'NAV.ABOUT' | translate }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
           <ion-item lines="none" (click)="onLogout()" button>
             <ion-icon name="exit" slot="start"></ion-icon>
             <ion-label>{{ 'NAV.LOGOUT' | translate }}</ion-label>
