@@ -9,16 +9,15 @@ const routes: Routes = [
   {
     path: '',
     component: TabsPage,
-    // canActivate: [AuthGuard],
+    canActivate: [TrialGuard],
     children: [
       {
         path: 'home',
-        canActivate: [TrialGuard],
         loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
       },
       {
         path: 'products',
-        canActivate: [AuthGuard, TrialGuard],
+        canActivate: [AuthGuard],
         loadChildren: () => import('./products/products.module').then( m => m.ProductsPageModule)
       },
       {

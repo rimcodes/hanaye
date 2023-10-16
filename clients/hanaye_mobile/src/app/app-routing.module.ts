@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { LoadLanguageComponent } from './load-language/load-language.component';
 import { UpdateAppComponent } from './pages/update-app/update-app.component';
+import { AboutComponent } from './pages/about/about.component';
 
 const routes: Routes = [
   {
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'update',
     component: UpdateAppComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: 'tabs',

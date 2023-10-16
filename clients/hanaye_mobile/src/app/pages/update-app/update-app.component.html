@@ -16,7 +16,9 @@
     <p class="my-5 text-2xl text-center text-neutral-700">{{ 'UPDATE_TEXT' | translate }}</p>
     <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in">
       <img *ngIf="platform.is('ios')" src="assets/update/app_store.svg" class="h-12 pr-4 bounce-top-icons">
-      <img *ngIf="!platform.is('ios')" src="assets/update/google_play.svg" class="h-12 bounce-top-icons">
+      <a href="https://play.google.com/store/apps/details?id=com.rimcodes.hanaye">
+        <img *ngIf="!platform.is('ios')" src="assets/update/google_play.svg" class="h-12 bounce-top-icons">
+      </a>
     </div>
   </div>
 </ion-content>
