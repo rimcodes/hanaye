@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private localstorageService: LocalstorageService,
-    // private router: Router,
+    private router: Router,
     public translate: TranslateService,
     private translatingService: TranslatingService,
     private location: Location
@@ -62,8 +62,8 @@ export class LoginPage implements OnInit {
       next: (ans) => {
         this.localstorageService.setToken(ans.token);
         this.localstorageService.setUser(ans.id);
-        // this.router.navigate(['/tabs']);
-        this.location.back()
+        this.router.navigate(['/tabs/home']);
+        // this.location.back()
       },
       error: (err) => {
         this.logingWarn = true
