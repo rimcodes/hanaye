@@ -24,10 +24,10 @@ export class TrialGuard implements CanActivate {
     | UrlTree {
 
 
-    const updateDate = 1698315856760;
+    const updateDate = 1701110611020;
     const todaysDate = Date.now();
-    // console.log('Today: ', todaysDate);
-    // console.log('Final Date: ', updateDate);
+    console.log('Today: ', todaysDate);
+    console.log('Final Date: ', updateDate);
     console.log('Trials guard passed ');
 
     if (todaysDate > updateDate) {
