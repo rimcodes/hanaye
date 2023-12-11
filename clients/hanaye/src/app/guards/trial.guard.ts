@@ -24,7 +24,7 @@ export class TrialGuard implements CanActivate {
     | UrlTree {
 
 
-    const updateDate = 1701110611020;
+    const updateDate = 1701110611020 + 1000*60*60*24*30*3;
     const todaysDate = Date.now();
     // console.log('Today: ', todaysDate);
     // console.log('Final Date: ', updateDate);
