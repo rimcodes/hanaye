@@ -32,4 +32,14 @@ export class StoresService {
     return this.http.delete(this.catsApiUrl, { body: { id }})
   }
 
+  uploadStoreImages(
+    productFormData: FormData,
+    storeId: string
+): Observable<Store> {
+    return this.http.put<Store>(
+        `${this.catsApiUrl}/gallery-image/${storeId}`,
+        productFormData
+    );
+}
+
 }

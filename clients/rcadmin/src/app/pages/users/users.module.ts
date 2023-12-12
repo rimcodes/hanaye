@@ -23,6 +23,8 @@ import { UserItemComponent } from './user-item/user-item.component';
 import { LocationPickerComponent } from './location-picker/location-picker.component';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
     MatSlideToggleModule,
     MatSelectModule,
     MatExpansionModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatSortModule
   ]
 })
 export class UsersModule { }

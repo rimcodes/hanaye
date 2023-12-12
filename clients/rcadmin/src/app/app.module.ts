@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SecurityContext } from '@angular/core';
-import { MarkdownModule } from 'ngx-markdown'; 
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +28,7 @@ import { LoadingComponent } from './common/loading/loading.component';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE }),
+    // MarkdownModule.forRoot({ loader: HttpClient, sanitize: SecurityContext.NONE }),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

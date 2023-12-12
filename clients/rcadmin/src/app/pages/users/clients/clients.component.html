@@ -1,4 +1,4 @@
-<mat-list>
+<div class="container md:mx-auto mx-5">
   <div mat-subheader class="relative mb-4">
     <div class="text-xl">Clients</div>
 
@@ -8,20 +8,114 @@
       </button>
     </div>
   </div>
-  <mat-list-item class="border-b-2"  *ngFor="let item of users$ | async">
-    <img matListItemAvatar [src]="item.image" />
-    <div matListItemTitle>{{ item.name }}</div>
-    <div matListItemLine>{{ item.updatedAt | date }}</div>
 
-    <div matListItemMeta>
-      {{ item.address }}
-    </div>
-    <button [routerLink]="['', 'users', 'form', item.id]" mat-icon-button matListItemMeta>
-      <mat-icon color="primary">info</mat-icon>
-    </button>
-    <button (click)="deleteUser(item)" mat-icon-button matListItemMeta>
-      <mat-icon color="warn">delete</mat-icon>
-    </button>
-  </mat-list-item>
-</mat-list>
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
 
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="announceSortChange($event)"
+    class="mat-elevation-z8"
+  >
+    <!-- Position Column -->
+    <ng-container matColumnDef="image">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by number"
+      >
+        الصورة
+      </th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.image ?? 'assets/holders/user.png'" width="48" />
+      </td>
+    </ng-container>
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by number"
+      >
+        الإسم
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="buttons">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+      ></th>
+      <td mat-cell *matCellDef="let element">
+        <a
+          [routerLink]="['', 'users', 'form', element.id]"
+          mat-icon-button
+          >
+          <!-- matListItemMeta -->
+          <mat-icon color="primary">info</mat-icon>
+        </a>
+
+        <!-- matListItemMeta -->
+        <a (click)="deleteUser(element)" mat-icon-button >
+          <mat-icon color="warn">delete</mat-icon>
+        </a>
+      </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="phone">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by weight"
+      >
+        رقم الهاتف
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.phone }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="address">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by symbol"
+      >
+        العنوان
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="created">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by symbol"
+      >
+        تاريخ الإنشاء
+      </th>
+      <td mat-cell *matCellDef="let element">{{ element.createdAt | date }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

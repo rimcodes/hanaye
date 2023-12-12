@@ -22,6 +22,7 @@ export class StoreFormComponent implements OnInit {
   panelOpenState!: boolean;
   location?: string;
   clients$!: Observable<User[]>;
+  storeId!: string
 
   constructor(
     private formBuilder: FormBuilder,
@@ -100,6 +101,7 @@ export class StoreFormComponent implements OnInit {
       if (params['id']) {
         this.editMode = true;
         this.storesService.getStore(params['id']).subscribe((res) => {
+          this.storeId = res.id ?? 'noid'
           this.storeForm['id'].setValue(res.id);
           this.storeForm['worker'].setValue(res.worker);
           this.storeForm['name'].setValue(res.name);
@@ -125,6 +127,43 @@ export class StoreFormComponent implements OnInit {
       fileReader.readAsDataURL(file);
     }
   }
+
+  // Uploading multiple images
+  imagesUpload(event: any) {
+    const files = event.target.files;
+
+    const formImages = new FormData();
+    for (let index = 0; index < files.length; index++) {
+        const element = files[index];
+
+        console.log(element);
+        formImages.append('images', element);
+    }
+
+    this.storesService
+        .uploadStoreImages(formImages, this.s)
+        .subscribe(
+            (product: Product) => {
+                this.messageService.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: `Product ${product.name} was updated!`
+                });
+                timer(2000)
+                    .toPromise()
+                    .then(() => {
+                        this.location.back();
+                    });
+            },
+            () => {
+                this.messageService.add({
+                    severity: 'error',
+                    summary: 'Error',
+                    detail: 'Sorry, product was not updated!'
+                });
+            }
+        );
+}
 
   private initForm() {
     this.form = this.formBuilder.group({

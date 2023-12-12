@@ -53,6 +53,7 @@ router.route('/')
     .put(uploadS3.single('image'), storesController.updateStore)
     .delete(storesController.deleteStore)
 
+router.route('/gallery-image/:id').put(uploadS3.array('images', 10), storesController.uploadGallery)
 router.route('/user/:userid').get(storesController.getWorkerStore)
 
 router.route('/:id').get(storesController.getStore)

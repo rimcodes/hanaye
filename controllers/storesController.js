@@ -171,6 +171,39 @@ const deleteStore = asyncHandler(async (req, res) => {
     res.json(reply)
 })
 
+/**
+ * @desc Upload store gallery
+ * @route POST /stores/gallery-image/:id
+ * @access Public
+ */
+const uploadGallery = asyncHandler(async (req, res) => {
+    if(!mongoose.isValidObjectId(req.params.id)){
+        res.status(400).send('Invalid store id');
+    }
+
+    const files = req.files;
+    let imagesPaths = [];
+    const basePath = process.env.BUCKETEER_BUCKET_NAME || ``;
+    if(files) {
+        files.map(file => {
+            imagesPaths.push(`${basePath}${file.key}`)
+        })
+    }
+
+    const store = await Store.findByIdAndUpdate(
+        req.params.id, 
+        {
+            images: imagesPaths
+        },
+        { new: true }
+    );
+
+    if(!store) {
+        return res.status(500).send('the store cannot be updated');
+    }
+
+    res.status(200).send(store);
+})
 
 module.exports = {
     getAllStores,
@@ -178,5 +211,6 @@ module.exports = {
     getWorkerStore,
     createNewStore,
     updateStore,
-    deleteStore
+    deleteStore,
+    uploadGallery
 }
