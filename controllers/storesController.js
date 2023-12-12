@@ -177,9 +177,9 @@ const deleteStore = asyncHandler(async (req, res) => {
  * @access Public
  */
 const uploadGallery = asyncHandler(async (req, res) => {
-    if(!mongoose.isValidObjectId(req.params.id)){
-        res.status(400).send('Invalid store id');
-    }
+    // if(!mongoose.isValidObjectId(req.params.id)){
+    //     res.status(400).send('Invalid store id');
+    // }
 
     const files = req.files;
     let imagesPaths = [];

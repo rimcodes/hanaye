@@ -16,7 +16,6 @@
             <mat-option *ngFor="let user of clients$ | async" [value]="user.id">
               {{ user.name }}
             </mat-option>
-
           </mat-select>
         </mat-form-field>
       </div>
@@ -46,23 +45,39 @@
         />
       </div>
 
+      <div class="w-1/2 p-3" *ngIf="editMode">
+        <button mat-icon-button [disabled]="uploadingGallery" (click)="galleryInput.click()">
+          <mat-icon *ngIf="!uploadingGallery">perm_media</mat-icon>
+          <mat-icon *ngIf="uploadingGallery">rotate_left</mat-icon>
+        </button>
+        <input
+          #galleryInput
+          hidden
+          type="file"
+          name="images"
+          accept="image/*"
+          multiple
+          (change)="imagesUpload($event)"
+        />
+      </div>
+
       <div class="w-full overflow-auto p-3">
         <mat-accordion class="self-start w-4/5 mx-auto">
           <mat-expansion-panel
-          (opened)="panelOpenState = true"
-          (closed)="panelOpenState = false"
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
           >
-          <mat-expansion-panel-header>
-            <mat-panel-title> الخريطة </mat-panel-title>
-            <mat-panel-description> </mat-panel-description>
-          </mat-expansion-panel-header>
-          <div>
-            <app-location-picker
-              [location]="location ?? '0, 0'"
-              (newCordsEvent)="addCords($event)"
-            ></app-location-picker>
-          </div>
-        </mat-expansion-panel>
+            <mat-expansion-panel-header>
+              <mat-panel-title> الخريطة </mat-panel-title>
+              <mat-panel-description> </mat-panel-description>
+            </mat-expansion-panel-header>
+            <div>
+              <app-location-picker
+                [location]="location ?? '0, 0'"
+                (newCordsEvent)="addCords($event)"
+              ></app-location-picker>
+            </div>
+          </mat-expansion-panel>
         </mat-accordion>
       </div>
     </form>
@@ -76,7 +91,6 @@
     >
       {{ editMode ? "تعديل" : "إنشاء" }}
     </button>
-
   </mat-card-actions>
 
   <!-- <div class="loading-cnt" *ngIf="isSubmitted && valid">
@@ -84,4 +98,3 @@
     الرجاء الانتظار ...
   </div> -->
 </mat-card>
-

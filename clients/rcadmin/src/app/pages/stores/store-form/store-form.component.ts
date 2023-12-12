@@ -23,6 +23,7 @@ export class StoreFormComponent implements OnInit {
   location?: string;
   clients$!: Observable<User[]>;
   storeId!: string
+  uploadingGallery = false
 
   constructor(
     private formBuilder: FormBuilder,
@@ -130,6 +131,7 @@ export class StoreFormComponent implements OnInit {
 
   // Uploading multiple images
   imagesUpload(event: any) {
+    this.uploadingGallery = true
     const files = event.target.files;
 
     const formImages = new FormData();
@@ -141,28 +143,15 @@ export class StoreFormComponent implements OnInit {
     }
 
     this.storesService
-        .uploadStoreImages(formImages, this.s)
-        .subscribe(
-            (product: Product) => {
-                this.messageService.add({
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: `Product ${product.name} was updated!`
-                });
-                timer(2000)
-                    .toPromise()
-                    .then(() => {
-                        this.location.back();
-                    });
-            },
-            () => {
-                this.messageService.add({
-                    severity: 'error',
-                    summary: 'Error',
-                    detail: 'Sorry, product was not updated!'
-                });
-            }
-        );
+        .uploadStoreImages(formImages, this.storeId)
+        .subscribe({
+          next: (res) => {
+            this.uploadingGallery = false
+          },
+          error: (err) => {
+            this.uploadingGallery = false
+          }
+        });
 }
 
   private initForm() {
